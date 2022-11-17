@@ -1,4 +1,18 @@
 <a href="/todos/new" class="btn btn-primary mb-3">Create</a>
+
+{{> message}}
+
+{{#if errMsgs}}
+  <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+    {{errMsgs}}
+    <button
+      type='button'
+      class='btn-close'
+      data-bs-dismiss='alert'
+      aria-label='Close'
+    ></button>
+  </div>
+{{/if}}
 <ul class="list-group">
   {{#each todos}}
   <li class="list-group-item">

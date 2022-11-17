@@ -31,6 +31,9 @@ module.exports = {
         return true
       }),
   ],
+  todoNewValidation: [
+    body('name').not().isEmpty().withMessage('請輸入todo內容'),
+  ],
 }
 
 // email, ,

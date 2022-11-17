@@ -10,4 +10,11 @@ router.use('/users', users)
 router.use('/todos', authenticator, todos)
 router.use('/',authenticator, home)
 
+router.use('*', (req, res) => {
+  res.status(404).send('404找不到')
+})
+router.use((err, req, res, next) => {
+  const errMsgs = err.message
+  res.status(500).render('index')
+})
 module.exports = router

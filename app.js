@@ -41,6 +41,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg')
   res.locals.error_messages = req.flash('error_messages')
   res.locals.register_errs = req.flash('register_errs')
+  res.locals.deleted_msg = req.flash('deleted_msg')
   next()
 })
 // router

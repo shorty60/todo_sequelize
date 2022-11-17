@@ -1,0 +1,20 @@
+<form
+  action='/todos/{{todo.id}}?_method=PUT'
+  method='POST'
+  style='display: inline;'
+  id='todo-form'
+  novalidate
+>
+  <div class="input-group">
+    <div class="input-group-text">
+      <input class="form-check-input mt-0" type="checkbox" name="isDone" {{#if todo.isDone}} checked{{/if}} required>
+          <div class='invalid-feedback'>
+      這個欄位必填喔
+    </div>
+    </div>
+    <input type="text" class="form-control" placeholder="name" name="name" value="{{todo.name}}">
+    
+    <button class="btn btn-success submit-button" type='submit'>Save</button>
+  </div>
+
+</form>

@@ -1,0 +1,37 @@
+{{#if newtodoErr}}
+  <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+    {{newtodoErr}}
+    <button
+      type='button'
+      class='btn-close'
+      data-bs-dismiss='alert'
+      aria-label='Close'
+    ></button>
+  </div>
+{{/if}}
+
+<form action='/todos' method='POST' style='display: inline;' id="todo-form" novalidate>
+  <div class='input-group'>
+    <input
+      type='text'
+      class='form-control'
+      placeholder='todo name'
+      name='name'
+      id='todo-form'
+      value='{{name}}'
+      required
+    />
+    <div class='valid-feedback'>
+      Looks good!
+    </div>
+    <div class='invalid-feedback'>
+      這個欄位必填喔
+    </div>
+
+    <button
+      class='btn btn-secondary submit-button'
+      type='submit'
+    >Create</button>
+  </div>
+
+</form>
