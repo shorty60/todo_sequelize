@@ -12,9 +12,10 @@ router.get('/', async (req, res, next) => {
       raw: true,
       nest: true,
     })
+    assert(todos.length, new Error('目前還沒有todo事項'))
     return res.render('index', { todos })
   } catch (err) {
-    return res.status(422).json(err)
+    next(err)
   }
 })
 
