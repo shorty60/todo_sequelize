@@ -38,26 +38,24 @@ router.get('/:id/edit', async (req, res, next) => {
     const UserId = req.user.id
     let todo = await Todo.findOne({ where: { id, UserId } })
     assert(todo, new Error('找不到這筆todo'))
-    todo = JSON.parse(JSON.stringify(todo))
-    return res.render('edit', { todo })
+    return res.render('edit', { todo: todo.toJSON() })
   } catch (err) {
     next(err)
   }
 })
-// 劉膽單筆detail
+// 瀏覽單筆detail
 router.get('/:id', async (req, res, next) => {
   const id = req.params.id
   const UserId = req.user.id
   try {
     let todo = await Todo.findOne({ where: { id, UserId } })
     assert(todo, new Error('找不到這筆todo'))
-    todo = JSON.parse(JSON.stringify(todo))
-    return res.render('detail', { todo })
+    return res.render('detail', { todo: todo.toJSON() })
   } catch (err) {
     next(err)
   }
 })
-// 送出編輯
+// 送出編輯內容
 router.put('/:id', todoNewValidation, async (req, res, next) => {
   const id = req.params.id
   const UserId = req.user.id
@@ -73,11 +71,13 @@ router.put('/:id', todoNewValidation, async (req, res, next) => {
     next(err)
   }
 })
-router.delete('/:id', async(req, res, next) =>{
+
+// 刪除一筆todo
+router.delete('/:id', async (req, res, next) => {
   const id = req.params.id
   const UserId = req.user.id
   await Todo.destroy({ where: { id, UserId } })
-  req.flash('deleted_msg','刪除成功')
+  req.flash('deleted_msg', '刪除成功')
   return res.redirect('/')
 })
 
