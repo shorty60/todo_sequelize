@@ -7,7 +7,7 @@ const db = require('../../models')
 const Todo = db.Todo
 const { todoNewValidation } = require('../../middlewares/validation')
 
-// 取得新增葉面
+// 取得新增頁面
 router.get('/new', (req, res) => {
   res.render('new')
 })

@@ -26,6 +26,7 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
+// 送出註冊資料
 router.post('/register', registerValidation, async (req, res, next) => {
   try {
     const { name, email, password, confirmPassword } = req.body
@@ -50,7 +51,7 @@ router.post('/register', registerValidation, async (req, res, next) => {
     next(err)
   }
 })
-
+// 使用者登出
 router.post('/logout', (req, res, next) => {
   req.logout(err => {
     if (err) {
